@@ -1,0 +1,47 @@
+<ion-tabs >
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>
+        TODO LIST
+      </ion-title>
+    </ion-toolbar>
+    <ion-content [fullscreen]="true">
+      <ion-header collapse="condense">
+      </ion-header>
+      <ion-list>
+          <ion-item-sliding #slidingItem *ngFor="let task of Tasks" id="item100">
+          <ion-item >
+            <ion-label>
+              <h2>{{task.title}}</h2>
+              <p>{{task.description}}</p>
+            </ion-label>
+            <ion-note slot="end">
+              <p class="text-lg text-black">before: </p>{{task.display_due_date}}
+            </ion-note>
+          </ion-item>
+      
+          <ion-item-options side="end">
+            <ion-item-option  color="danger">
+              <ion-icon  slot="icon-only" (click)="deleteTask(task.id,slidingItem)" name="trash"></ion-icon>
+            </ion-item-option>
+            <ion-item-option  class="bg-orange-300" >
+              <ion-icon  slot="icon-only" (click)="editTask(task,slidingItem)" name="create"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+        
+    </ion-content>
+  
+  
+  
+  
+  
+  </ion-header>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="goToAdd()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  
+</ion-tabs>

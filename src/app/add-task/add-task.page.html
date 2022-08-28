@@ -1,0 +1,45 @@
+
+<ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <!-- add return back arrow to /home/todolist -->
+      <ion-buttons slot="start">
+        <ion-button (click)="goBack()">
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title >
+        {{isEdit?'Edit task':'Add Task'}}
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <!-- add input for task name -->
+    <ion-item>
+      <ion-label position="stacked">Task title</ion-label>
+      <ion-input [(ngModel)]="data.title" aria-required="true"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Task description</ion-label>
+      <ion-input [(ngModel)]="data.description" aria-required="true"></ion-input>
+    </ion-item>
+    <!-- <ion-item>
+      <ion-label>Priority</ion-label>
+      <ion-select>
+        <ion-select-option value="critical">Critical</ion-select-option>
+        <ion-select-option value="high priority">High priority</ion-select-option>
+        <ion-select-option value="neutral">Neutral</ion-select-option>
+      </ion-select>
+    </ion-item> -->
+    <!-- add small date picker -->
+    <!-- <ion-item>
+      <ion-datetime displayFormat="MMM DD, YYYY" pickerFormat="MMM DD, YYYY" ></ion-datetime>
+    </ion-item> -->
+    <ion-item>
+      <h1  class="text-xs mt-3" >Due date</h1>
+      <ion-datetime aria-required="true" class="ml-6" [(ngModel)]="data.due_date" displayFormat="MM/YYYY" pickerFormat="MM YYYY" >
+      </ion-datetime>
+      
+    </ion-item>
+    <ion-button type="submit" class="m-16" shape="round" size="large" expand="block" (click)="addOrEditTask()">{{isEdit?'Edit':'Add'}}</ion-button>
+</ion-content>
